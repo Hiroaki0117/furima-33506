@@ -1,24 +1,63 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column           | Type    | Options     |
+| ---------------- | ------- | ----------- |
+| nickname         | string  | null: false |
+| email            | string  | null: false |
+| password         | string  | null: false |
+| family_name      | string  | null: false |
+| first_name       | string  | null: false |
+| kana_family_name | string  | null: false |
+| kana_first_name  | string  | null: false |
+| birth_day        | integer | null: false |
 
-* Ruby version
+### Association
+- has_many :items
+- has-one :address
+- has-one :card
 
-* System dependencies
+# items テーブル
 
-* Configuration
+| Column       | Type       | Options                        |
+| ------------ | ----------| ------------------------------- |
+| name         | string    | null: false                     |
+| explanation  | string    | null: false                     |
+| category     | string    | null: false                     | 
+| state        | string    | null: false                     |
+| delivery_fee | string    | null: false                     |
+| area         | string    | null: false                     |
+| days         | string    | null: false                     |
+| price        | string    | null: false                     |
+| user         | references | null: false, foreign_key: true |
 
-* Database creation
+### Association
 
-* Database initialization
+- belongs_to :user
 
-* How to run the test suite
+## addresses テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| post_code     | integer    | null: false                    |
+| prefectures   | string     | null: false                    |
+| city          | string     | null: false                    |
+| street_number | string     | null: false                    |
+| buildings     | string     | null: false                    |
+| phone_number  | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
-* Deployment instructions
+### Association
 
-* ...
+- belongs_to :user
+
+## cards テーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| customer_id   | string     | null: false                    |
+| card_id       | string     | null: false                    |
+| user          | references | null: false, foreign_key: true |
+
+- belongs_to :user
