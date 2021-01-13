@@ -2,35 +2,34 @@
 
 ## users テーブル
 
-| Column           | Type    | Options     |
-| ---------------- | ------- | ----------- |
-| nickname         | string  | null: false |
-| email            | string  | null: false |
-| password         | string  | null: false |
-| family_name      | string  | null: false |
-| first_name       | string  | null: false |
-| kana_family_name | string  | null: false |
-| kana_first_name  | string  | null: false |
-| birth_day        | integer | null: false |
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| family_name        | string  | null: false |
+| first_name         | string  | null: false |
+| kana_family_name   | string  | null: false |
+| kana_first_name    | string  | null: false |
+| birth_day          | date    | null: false |
 
 ### Association
 - has_many :items
-- has-one :address
 - has-one :card
 
 # items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ----------| ------------------------------- |
-| name         | string    | null: false                     |
-| explanation  | string    | null: false                     |
-| category     | string    | null: false                     | 
-| state        | string    | null: false                     |
-| delivery_fee | string    | null: false                     |
-| area         | string    | null: false                     |
-| days         | string    | null: false                     |
-| price        | string    | null: false                     |
-| user         | references | null: false, foreign_key: true |
+| Column          | Type       | Options                         |
+| --------------- | ---------- | ------------------------------- |
+| name            | string     | null: false                     |
+| explanation     | text       | null: false                     |
+| category_id     | integer    | null: false                     | 
+| state_id        | integer    | null: false                     |
+| delivery_fee_id | integer    | null: false                     |
+| area_id         | integer    | null: false                     |
+| days_id         | integer    | null: false                     |
+| price           | integer    | null: false                     |
+| user            | references | null: false, foreign_key: true  |
 
 ### Association
 
@@ -40,17 +39,17 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| post_code     | integer    | null: false                    |
-| prefectures   | string     | null: false                    |
+| post_code     | string     | null: false                    |
+| prefectures   | integer    | null: false                    |
 | city          | string     | null: false                    |
 | street_number | string     | null: false                    |
-| buildings     | string     | null: false                    |
-| phone_number  | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| buildings     | string     |                                |
+| phone_number  | string     | null: false                    |
+| card          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
+- belongs_to :card
 
 ## cards テーブル
 
@@ -61,3 +60,4 @@
 | user          | references | null: false, foreign_key: true |
 
 - belongs_to :user
+- has-one :address
