@@ -16,6 +16,7 @@
 ### Association
 - has_many :items
 - has-one :card
+- has_many :purchases
 
 # items テーブル
 
@@ -34,13 +35,14 @@
 ### Association
 
 - belongs_to :user
+- has-one :purchase
 
 ## addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | post_code     | string     | null: false                    |
-| prefectures   | integer    | null: false                    |
+| area_id       | integer    | null: false                    |
 | city          | string     | null: false                    |
 | street_number | string     | null: false                    |
 | buildings     | string     |                                |
@@ -49,15 +51,15 @@
 
 ### Association
 
-- belongs_to :card
+- belongs_to :purchase
 
-## cards テーブル
+## purchases テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| customer_id   | string     | null: false                    |
-| card_id       | string     | null: false                    |
+| item          | references | null: false, foreign_key: true |
 | user          | references | null: false, foreign_key: true |
 
 - belongs_to :user
 - has-one :address
+- belongs_to :item
