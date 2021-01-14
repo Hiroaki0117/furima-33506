@@ -58,3 +58,7 @@ group :development do
 end
 
 gem 'devise'
+gem 'pry-rails'
+gem 'rspec-rails'
+gem 'factory_bot_rails'
+gem 'faker'
