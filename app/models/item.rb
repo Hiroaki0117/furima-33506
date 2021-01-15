@@ -16,5 +16,5 @@ class Item < ApplicationRecord
   validates :delivery_fee_id, numericality: { other_than: 1 }, presence: true
   validates :area_id, numericality: { other_than: 1 }, presence: true
   validates :days_id, numericality: { other_than: 1 }, presence: true
-  validates :price, presence: true
+  validates :price,numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, presence: true
 end
