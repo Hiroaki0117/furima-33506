@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
     end
     context 'ユーザー新規登録ができる場合' do
       it "全ての入力が正しい場合は登録できる" do
-        binding.pry
         expect(@user).to be_valid
       end
 
