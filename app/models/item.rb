@@ -8,9 +8,11 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :area
   belongs_to :day
-  validates :image, presence: true
-  validates :name, presence: true
-  validates :explanation, presence: true
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :explanation
+  end
   with_options numericality: { other_than: 1 }, presence: true do
     validates :category_id
     validates :state_id
