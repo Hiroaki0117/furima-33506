@@ -11,12 +11,12 @@ class Item < ApplicationRecord
   validates :image, presence: true
   validates :name, presence: true
   validates :explanation, presence: true
-  with_options numericality: { other_than: 1 } do
-    validates :category_id, presence: true
-    validates :state_id, presence: true
-    validates :delivery_fee_id, presence: true
-    validates :area_id,  presence: true
-    validates :days_id, presence: true
+  with_options numericality: { other_than: 1 }, presence: true do
+    validates :category_id
+    validates :state_id
+    validates :delivery_fee_id
+    validates :area_id
+    validates :days_id
   end
   VALID_PRICE_REGEX = /\A[0-9]+\z/
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: VALID_PRICE_REGEX, message: "is not a number" }, presence: true
