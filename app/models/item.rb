@@ -8,12 +8,13 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :area
   belongs_to :day
+  validates :image, presence: true
   validates :name, presence: true
   validates :explanation, presence: true
-  validates :category_id, numericality: { other_than: 1 }
-  validates :state_id, numericality: { other_than: 1 }
-  validates :delivery_fee_id, numericality: { other_than: 1 }
-  validates :area_id, numericality: { other_than: 1 }
-  validates :days_id, numericality: { other_than: 1 }
+  validates :category_id, numericality: { other_than: 1 }, presence: true
+  validates :state_id, numericality: { other_than: 1 }, presence: true
+  validates :delivery_fee_id, numericality: { other_than: 1 }, presence: true
+  validates :area_id, numericality: { other_than: 1 }, presence: true
+  validates :days_id, numericality: { other_than: 1 }, presence: true
   validates :price, presence: true
 end

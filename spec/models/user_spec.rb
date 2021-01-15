@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
     end
     context 'ユーザー新規登録ができる場合' do
       it "全ての入力が正しい場合は登録できる" do
+        binding.pry
         expect(@user).to be_valid
       end
 
@@ -20,7 +21,6 @@ RSpec.describe User, type: :model do
     context "ユーザー新規登録ができない場合" do
       it "nicknameが空では登録出来ない" do
         @user.nickname = nil
-        @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
   
