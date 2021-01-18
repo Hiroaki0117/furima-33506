@@ -4,7 +4,7 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @item.name %>
     </h2>
     <div class='item-img-content'>
       <%= image_tag @item.image, class:"item-box-img" %>
@@ -29,7 +29,7 @@
       <p class='or-text'>or</p>
       <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
     
-    <% else%>
+    <% elsif user_signed_in? %>
       <%# 商品が売れていない場合はこちらを表示しましょう %>
       <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
       <%# //商品が売れていない場合はこちらを表示しましょう %>
@@ -105,7 +105,7 @@
     </a>
   </div>
   <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href=“#” class=‘another-item’><%= @item.category_id %>をもっと見る</a>
+  <a href=“#” class=‘another-item’><%= @item.category.name %>をもっと見る</a>
   <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
