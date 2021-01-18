@@ -18,7 +18,7 @@ class Item < ApplicationRecord
     validates :state_id
     validates :delivery_fee_id
     validates :area_id
-    validates :days_id
+    validates :day_id
   end
   VALID_PRICE_REGEX = /\A[0-9]+\z/
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: VALID_PRICE_REGEX, message: "is not a number" }, presence: true
