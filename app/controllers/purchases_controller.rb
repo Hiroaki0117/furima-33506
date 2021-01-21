@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item
   before_action :move_to_index_purchase
-  before_action :authenticate_user!
   def index
     @item_purchase = ItemPurchase.new
   end
@@ -38,10 +38,10 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index_purchase
-    if user_signed_in?
-      if current_user.id == @item.user_id
+    if current_user.id == @item.user_id
+     redirect_to root_path
+    elsif @item.purchase.present?
       redirect_to root_path
-      end
     end
   end
 end

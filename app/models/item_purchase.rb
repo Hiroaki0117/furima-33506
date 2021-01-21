@@ -6,8 +6,10 @@ class ItemPurchase
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
     validates :city
     validates :street_number
-    validates :phone_number, format: { with: /\A0[5789]0[-]?\d{4}[-]?\d{4}\z/, message: "Input only number" }
+    validates :phone_number, format: { with: /\A\d{11}\z/, message: "Input only number" }
     validates :token
+    validates :user_id
+    validates :item_id
   end
   validates :area_id, numericality: { other_than: 1 }, presence: true
   def save
