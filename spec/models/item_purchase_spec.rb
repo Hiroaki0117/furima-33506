@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe ItemPurchase, type: :model do
   describe '#create' do
     before do
-      @item_purchase = FactoryBot.build(:item_purchase)
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      @item_purchase = FactoryBot.build(:item_purchase, user_id: user.id, item_id: item.id)
+      sleep 0.1
     end
 
     context "商品が購入できる場合" do
@@ -61,6 +64,12 @@ RSpec.describe ItemPurchase, type: :model do
 
       it "電話番号が10桁か11桁の半角数字以外では商品を購入できない" do
         @item_purchase.phone_number = "１１１１"
+        @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Phone number Input only number")
+      end
+
+      it "電話番号は英数混合では商品を購入できない" do
+        @item_purchase.phone_number = "aaa111aaa11"
         @item_purchase.valid?
         expect(@item_purchase.errors.full_messages).to include("Phone number Input only number")
       end
