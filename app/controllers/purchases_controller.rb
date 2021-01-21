@@ -1,5 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :set_item
+  before_action :move_to_index_purchase
+  before_action :authenticate_user!
   def index
     @item_purchase = ItemPurchase.new
   end
@@ -23,6 +25,7 @@ class PurchasesController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+    
   end
 
   def pay_item
@@ -32,5 +35,13 @@ class PurchasesController < ApplicationController
       card: purchase_params[:token],
       currency: "jpy"
     )
+  end
+
+  def move_to_index_purchase
+    if user_signed_in?
+      if current_user.id == @item.user_id
+      redirect_to root_path
+      end
+    end
   end
 end
