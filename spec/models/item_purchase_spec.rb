@@ -59,7 +59,7 @@ RSpec.describe ItemPurchase, type: :model do
         expect(@item_purchase.errors.full_messages).to include("Phone number can't be blank")
       end
 
-      it "電話番号が11桁の半角数字以外では商品を購入できない" do
+      it "電話番号が10桁か11桁の半角数字以外では商品を購入できない" do
         @item_purchase.phone_number = "１１１１"
         @item_purchase.valid?
         expect(@item_purchase.errors.full_messages).to include("Phone number Input only number")
