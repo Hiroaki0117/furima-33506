@@ -5,14 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname, presence: true
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
-  validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'Include both letters and numbers' }
+  validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'は英数字混合にしてください' }
   VALID_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々]+\z/
-  with_options presence: true, format: { with: VALID_NAME_REGEX, message: 'Full-width characters' } do
+  with_options presence: true, format: { with: VALID_NAME_REGEX, message: 'は全角文字で入力してください' } do
     validates :family_name
     validates :first_name
   end
   VALID_KANA_NAME_REGEX = /\A[ァ-ヶー－]+\z/
-  with_options presence: true, format: { with: VALID_KANA_NAME_REGEX, message: "Full-width katakana characters" } do
+  with_options presence: true, format: { with: VALID_KANA_NAME_REGEX, message: "は全角カナ文字で入力してください" } do
     validates :kana_family_name
     validates :kana_first_name
   end
