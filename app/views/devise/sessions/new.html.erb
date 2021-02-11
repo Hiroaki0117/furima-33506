@@ -11,6 +11,14 @@
     <%= flash[:notice] %>
     <%= flash[:alert] %>
   </div>
+  <div class="login-box-logo">
+    <%= link_to user_facebook_omniauth_authorize_path, method: :post, class:"facebook-logo" do %>
+      <i class="fab fa-facebook"></i><p class="logo-font">Facebookでログイン</p>
+    <% end %>
+    <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class:"google-logo" do %>
+      <i class="fab fa-google"></i><p class="logo-font">Googleでログイン</p>
+    <% end %>
+  </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">メールアドレス</label>
@@ -30,6 +38,4 @@
   </div>
 </div>
 <% end %>
-<%= link_to "Facebookで登録", user_facebook_omniauth_authorize_path, method: :post%>
-<%= link_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, method: :post%>
 <%= render "shared/second-footer"%>

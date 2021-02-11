@@ -1,0 +1,85 @@
+.registration-new {
+  width: 100%;
+  min-width: 800px;
+  height: 100%;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.form-wraper {
+  width: 50%;
+  background-color: white;
+  padding-bottom: 250px;
+}
+
+.email-box {
+  border: 1px solid transparent;
+  color: #fff;
+  background-color: #ea352d;
+  padding: 10px;
+  font-size: 16px;
+  display: block;
+  width: 50%;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.login-box-logo {
+  margin-top: 20px;
+  
+}
+
+.fa-envelope {
+  margin-right: 20px;
+  position: absolute;
+  font-size: 20px;
+  top: 13px;
+  left: 16px;
+}
+
+.facebook-logo {
+  color: #fff;
+  display: block;
+  width: 50%;
+  margin: 0 auto 20px;
+  font-size: 16px;
+  padding: 10px;
+  background: #385185;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.fa-facebook {
+  margin-right: 20px;
+  position: absolute;
+  font-size: 20px;
+  top: 13px;
+  left: 16px;
+}
+
+.google-logo {
+  color: #333;
+  display: block;
+  width: 50%;
+  margin: 0 auto 20px;
+  font-size: 16px;
+  padding: 10px;
+  border: #979797 solid 1px;
+  position: relative;
+}
+
+.fa-google {
+  margin-right: 20px;
+  position: absolute;
+  font-size: 20px;
+  top: 13px;
+  left: 16px;
+  background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+}
+
+.logo-font {
+  text-align: center;
+}
+
